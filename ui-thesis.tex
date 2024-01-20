@@ -46,7 +46,7 @@
 \documentclass[a4paper,fleqn,11pt,oneside]{book}
 \usepackage{tikz}
 \usetikzlibrary{arrows,shapes}
-
+\usepackage{tabulary}
 \usepackage{Settings/UI-Thesis}
 \usepackage{acronym}
 \usepackage{multirow}
@@ -83,37 +83,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\algnewcommand\algorithmicforeach{\textbf{for each}}
-\algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
-%
-%\algnewcommand{\IfThenElse}[3]{% \IfThenElse{<if>}{<then>}{<else>}
-%  \State \algorithmicif\ #1\ \algorithmicthen\ #2\ \algorithmicelse\ #3}
 
-%\algdef{SE}[FOR]{NoDoFor}{EndFor}[1]{\algorithmicfor\ #1}{\algorithmicend\ \algorithmicfor}%
-%\algdef{SE}[IF]{NoThenIf}{EndIf}[1]{\algorithmicif\ #1}{\algorithmicend\ \algorithmicif}%
-
-\newcommand*\diamondarrow{%
-  \stackengine{0pt}{\hspace{1.2ex}$\rightarrow$}{$\lozenge$}{O}{l}{F}{F}{L}}
-\newcommand*\fdiamondarrow{%
-  \stackengine{0pt}{\hspace{1.2ex}$\rightarrow$}{$\blacklozenge$}{O}{l}{F}{F}{L}}
-\newcommand*\dltriangle{%
-  \stackengine{0pt}{${-}{-}$}{\hspace{3.2ex}$\vartriangleright$}{O}{l}{F}{F}{L}}
-\newcommand*\ltriangle{%
-  \stackengine{0pt}{${-}$\hspace{-.5ex}${-}$}{\hspace{2.8ex}$\vartriangleright$}{O}{l}{F}{F}{L}}
-
-\makeatletter
-\providecommand*{\cupdot}{%
-  \mathbin{%
-    \mathpalette\@cupdot{}%
-  }%
-}
-\newcommand*{\@cupdot}[2]{%
-  \ooalign{%
-    $\m@th#1\cup$\cr
-    \hidewidth$\m@th#1\cdot$\hidewidth
-  }%
-}
-\makeatother
 
 %\DeclareMathSizes{9}{9}{9}{9}
 
@@ -165,9 +135,9 @@
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Title Page ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \DepartmentFa{دانشکده مهندسی کامپیوتر}
 \GroupFa{گروه مهندسی نرم‌افزار}
-\ThesisTypeFa{رساله} % Or \ThesisTypeFa{پایان‌نامه} Or \ThesisTypeFa{پیشنهادیه پایان‌نامه}
+\ThesisTypeFa{پروژه درس روش پژوهش و ارائه} % Or \ThesisTypeFa{پایان‌نامه} Or \ThesisTypeFa{پیشنهادیه پایان‌نامه}
 \DegreeFa{کارشناسی} % Or \DegreeFa{کارشناسی ارشد}
-\FieldFa{رشته‌ی مهندسی کامپیوتر}
+\FieldFa{مهندسی کامپیوتر}
 \BranchFa{ هوش مصنوعی}   % This is نام گرایش
 \YourFullnameFa{ سهیل سلیمی}
 \FirstSupervisorFa{زهرا زجاجی}
@@ -189,10 +159,10 @@
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Table of Contents/Figures/Tables ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \setcounter{page}{0}
+
 \MakeTableOfContents
 \MakeListOfFigures
 \MakeListOfTables
-\MakeListOfAlgorithms
 
 % ----------------------------------------------------------------------------
 \clearpage
@@ -207,10 +177,8 @@
 
 \input{Chapters/Chapter1}
 \input{Chapters/Chapter2}
-%\input{Chapters/Chapter3}
-%\input{Chapters/Chapter4}
-%\input{Chapters/Chapter5}
-%\input{Chapters/Chapter6}
+\input{Chapters/Chapter3}
+
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ References ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 % References.bib نام فایل حاوی رفرنس‌ها است.
@@ -252,38 +220,9 @@
 \makeatother
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Appendices ▓▓▓▓▒▒▒▒▒▒░░░░░░░
-\MakeAppendices
 %\addtocontents{lof}{\protect\setcounter{tocdepth}{0}} % ignore adding appendix figures to list of figures
 %\addtocontents{lot}{\protect\setcounter{tocdepth}{0}} % ignore adding appendix table to list of tables
 \captionsetup{list=no}
-
-\input{Chapters/Appendices}
-
-% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Dictionary ▓▓▓▓▒▒▒▒▒▒░░░░░░░
-\onehalfspacing
-\input{Chapters/dicfa2en}
-\input{Chapters/dicen2fa}
-\input{Chapters/acronyms}
-
-
-% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Abstract - English ▓▓▓▓▒▒▒▒▒▒░░░░░░░
-\input{Chapters/AbstractEn}
-\MakeEnglishAbstract
-
-% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Signature - English ▓▓▓▓▒▒▒▒▒▒░░░░░░░
-\DepartmentEn{Faculty of Computer Engineering}
-\DegreeEn{Ph.D.} % Or \DegreeEn{M.Sc.)} 
-\YourFullnameEn{Student First and Last Name}
-\DateEn{Month Year} %
-\FirstSupervisorEn{Supervisor First and Last Name}
-%\SecondSupervisorEn{Second Supervisor, Prof.} % Optional (Remove It If You Don't Have)
-\TitleEn{Thesis English Title} 
-%\\[0.2cm] second line (if any)} %% Break the title, if required
-% اگر عنوان ره طولانی بود، در دو خط به صورت نشان داده شده تقسیم شود.
-سال\GroupEn{Department of Software Engineering}
-\FirstAdvisorEn{First Advisor, Assoc. Prof.}
-
-\MakeEnglishSignaturePage
 
 \end{document} 
 
